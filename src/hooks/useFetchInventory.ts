@@ -2,7 +2,13 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setInventory } from '../store/inventorySlice';
-import { endpointUrl } from '../utils/constants';
+import {
+  endpointUrl,
+  errMsgOne,
+  errMsgTwo,
+  mockApiUrl,
+  tooManyRequestErrorCode,
+} from '../utils/constants';
 
 const useFetchInventory = () => {
   const dispatch = useDispatch();
@@ -11,12 +17,15 @@ const useFetchInventory = () => {
     const fetchInventory = async () => {
       try {
         const response = await axios.get(endpointUrl);
-        dispatch(setInventory(response.data));
+        await dispatch(setInventory(response.data));
       } catch (error) {
-        if (error?.response && error?.response.status === 429) {
-          console.error('Too many requests. Please try again later.');
+        if (
+          error?.response &&
+          error?.response.status === tooManyRequestErrorCode
+        ) {
+          console.error(errMsgOne);
         } else {
-          console.error('Error fetching inventory:', error);
+          console.error(errMsgTwo, error);
         }
       }
     };
