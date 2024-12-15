@@ -17,6 +17,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
   onToggleDisable,
   disableActions = false,
 }) => {
+  console.log(products, disableActions, '*******');
   return (
     <div className="overflow-y-auto max-h-[600px] border border-gray-300">
       <table className="min-w-full table-auto border-collapse">
@@ -24,32 +25,32 @@ const ProductTable: React.FC<ProductTableProps> = ({
           <tr
             className={`hover:bg-gray-600 text-white ${
               disableActions
-                ? 'text-gray-900 pointer-events-none bg-gray-200 z-10'
-                : 'bg-opacity-100 '
+                ? 'text-gray-950 pointer-events-none bg-gray-200 z-10'
+                : 'bg-opacity-100'
             }`}
           >
             <th
-              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? '' : 'text-red-600'}`}
+              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'text-gray-900' : 'text-red-600'}`}
             >
               Name
             </th>
             <th
-              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? '' : 'text-red-600'}`}
+              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'text-gray-900' : 'text-red-600'}`}
             >
               Price
             </th>
             <th
-              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? '' : 'text-red-600'}`}
+              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'text-gray-900' : 'text-red-600'}`}
             >
               Category
             </th>
             <th
-              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? '' : 'text-red-600'}`}
+              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'text-gray-900' : 'text-red-600'}`}
             >
               Quantity
             </th>
             <th
-              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? '' : 'text-red-600'}`}
+              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'text-gray-900' : 'text-red-600'}`}
             >
               Actions
             </th>
@@ -59,10 +60,10 @@ const ProductTable: React.FC<ProductTableProps> = ({
           {products.map((product) => (
             <tr
               key={product.id}
-              className={`hover:bg-gray-600 text-white ${
-                (product.isDisabled && !disableActions) || disableActions
-                  ? 'bg-opacity-80 text-gray-600 pointer-events-none'
-                  : ''
+              className={`hover:bg-gray-600 ${
+                disableActions || product.isDisabled
+                  ? 'bg-opacity-90 text-gray-500 pointer-events-none'
+                  : 'text-white'
               }`}
             >
               <td className="border border-gray-300 px-4 py-2">
@@ -81,7 +82,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
                 <button
                   className={`${
                     disableActions || product.isDisabled
-                      ? 'text-gray-400 cursor-not-allowed'
+                      ? 'text-gray-500 cursor-not-allowed'
                       : 'text-blue-500 hover:text-blue-700'
                   }`}
                   aria-label="Edit"
@@ -93,7 +94,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
                 <button
                   className={`${
                     disableActions || product.isDisabled
-                      ? 'text-gray-400 cursor-not-allowed'
+                      ? 'text-gray-500 cursor-not-allowed'
                       : 'text-red-500 hover:text-red-700'
                   }`}
                   aria-label="Delete"
@@ -104,9 +105,9 @@ const ProductTable: React.FC<ProductTableProps> = ({
                 </button>
                 <button
                   className={`${
-                    disableActions
-                      ? 'text-gray-400 cursor-not-allowed'
-                      : 'text-gray-200 hover:text-gray-500'
+                    disableActions || product.isDisabled
+                      ? 'text-gray-500 cursor-not-allowed'
+                      : 'text-green-400 hover:text-green-500'
                   }`}
                   aria-label="Toggle Disable"
                   disabled={disableActions}
