@@ -28,14 +28,14 @@ const EditPopup: React.FC<EditPopupProps> = ({ product, onClose }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center">
-      <div className="bg-bodyColor bg-opacity-100 p-6 rounded shadow-lg w-full max-w-md relative border border-gray-300">
+      <div className="bg-gradient-to-r from-gray-950 via-gray-900 to-black text-designColor bg-opacity-95 p-6 rounded shadow-lg w-full max-w-md relative border border-gray-300">
         <button
           onClick={onClose}
           className="absolute top-2 right-2 text-gray-400  hover:text-gray-800"
         >
           <AiOutlineClose size={24} />
         </button>
-        <h2 className="text-xl font-bold mb-4 text-white  tracking-wide">
+        <h2 className="text-xl font-bold mb-4 text-white text-transparent bg-clip-text  bg-gradient-to-r  from-purple-400 to-green-500 tracking-wide">
           Edit Product
         </h2>
         <form onSubmit={handleSubmit}>
@@ -48,7 +48,7 @@ const EditPopup: React.FC<EditPopupProps> = ({ product, onClose }) => {
               name="name"
               value={formValues.name}
               onChange={handleChange}
-              className="w-full px-3 py-2 highlight  rounded-md bg-[#191B1E] border border-gray-300  text-white"
+              className="w-full px-3 py-2 highlight  rounded-md bg-bodyColor border border-gray-300  text-white"
             />
           </div>
           <div className="mb-4">
@@ -60,7 +60,7 @@ const EditPopup: React.FC<EditPopupProps> = ({ product, onClose }) => {
               name="price"
               value={formValues.price}
               onChange={handleChange}
-              className="w-full px-3 py-2 highlight  rounded-md bg-[#191B1E] border border-gray-300  text-white"
+              className="w-full px-3 py-2 highlight  rounded-md bg-bodyColor border border-gray-300  text-white"
             />
           </div>
           <div className="mb-4">
@@ -72,7 +72,7 @@ const EditPopup: React.FC<EditPopupProps> = ({ product, onClose }) => {
               name="quantity"
               value={formValues.quantity}
               onChange={handleChange}
-              className="w-full px-3 py-2 highlight  rounded-md bg-[#191B1E] border border-gray-300  text-white"
+              className="w-full px-3 py-2 highlight  rounded-md bg-bodyColor border border-gray-300  text-white"
             />
           </div>
           <div className="mb-4">
@@ -84,7 +84,7 @@ const EditPopup: React.FC<EditPopupProps> = ({ product, onClose }) => {
               name="category"
               value={formValues.category}
               onChange={handleChange}
-              className="w-full px-3 py-2 highlight  rounded-md bg-[#191B1E] border border-gray-300  text-white"
+              className="w-full px-3 py-2 highlight  rounded-md bg-bodyColor border border-gray-300  text-white"
             />
           </div>
           <div className="flex justify-end">
@@ -96,7 +96,7 @@ const EditPopup: React.FC<EditPopupProps> = ({ product, onClose }) => {
             </button>
             <button
               type="submit"
-              className="px-4 py-2 text-white bg-gray-800  hover:bg-[#191B1E] rounded-md"
+              className="px-4 py-2 text-white bg-gray-800  hover:bg-bodyColor rounded-md"
             >
               Save
             </button>

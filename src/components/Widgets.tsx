@@ -91,28 +91,32 @@ const Widgets: React.FC<{ isAdmin: boolean }> = ({ isAdmin }) => {
   return (
     <div
       key={componentKey}
-      className="grid grid-cols-2 gap-3 sm:grid-cols-4  mb-6 rounded-lg custom-range:gap-8 custom-range:mx-4"
+      className="grid grid-cols-2 gap-3 sm:grid-cols-4  mb-6 rounded-lg custom-range:gap-8 custom-range:mx-4 "
     >
       {widgetData.map((widget, idx) => (
         <div
           key={widget.id + idx}
-          className={`flex gap-2 items-center p-4 mx-3  rounded-lg  ${
-            isAdmin ? 'bg-gray-900 text-red-600' : 'bg-gray-200 text-black'
+          className={`flex gap-2 items-center p-4 mx-3  rounded-lg  shadow-lg ${
+            isAdmin
+              ? 'border border-white text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500 text-red-600'
+              : 'bg-gray-300 text-black'
           }`}
         >
-          <div>{widget.icon}</div>
+          <div className="text-orange-500">{widget.icon}</div>
 
           <div
-            className={`w-auto flex flex-col  ${
+            className={`w-auto flex flex-col  font-semibold text-transparent bg-clip-text  bg-gradient-to-r  from-purple-400 to-green-500 rounded-full   ${
               isAdmin ? ' text-red-600' : ' text-black'
             }`}
           >
-            <h3 className={`flex items-center text-xl font-semibold text-wrap`}>
+            <h3
+              className={`flex items-center text-xl mx-2 font-semibold text-wrap`}
+            >
               {widget.label}
             </h3>
 
             <p
-              className={` flex items-center text-md  py-1 gap-0 px-4 text-wrap ${
+              className={` flex items-center text-md  py-1   gap-0 px-4 text-wrap ${
                 isAdmin ? 'text-white' : ' text-black'
               }`}
             >

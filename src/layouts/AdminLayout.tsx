@@ -14,7 +14,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({
   isAdmin,
 }) => {
   return (
-    <div className="min-h-screen bg-bodyColor text-designColor bg-opacity-95">
+    <div className="min-h-screen bg-gradient-to-r from-gray-950 via-gray-900 to-black text-designColor bg-opacity-95">
       <Navbar onToggleView={onToggleView} isAdmin={isAdmin} />
       <Widgets isAdmin={isAdmin} />
       <main className="p-4">{children}</main>

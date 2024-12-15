@@ -17,40 +17,39 @@ const ProductTable: React.FC<ProductTableProps> = ({
   onToggleDisable,
   disableActions = false,
 }) => {
-  console.log(products, disableActions, '*******');
   return (
     <div className="overflow-y-auto max-h-[600px] border border-gray-300">
       <table className="min-w-full table-auto border-collapse">
         <thead className="sticky top-0 bg-gray-950 text-white z-100 shadow-lg border border-gray-300">
           <tr
-            className={`hover:bg-gray-600 text-white ${
+            className={`hover:bg-gray-600 text-gray-700 ${
               disableActions
                 ? 'text-gray-950 pointer-events-none bg-gray-200 z-10'
                 : 'bg-opacity-100'
             }`}
           >
             <th
-              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'text-gray-900' : 'text-red-600'}`}
+              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'bg-gradient-to-r from-teal-400 to-green-400' : 'text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500 text-red-600'}`}
             >
               Name
             </th>
             <th
-              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'text-gray-900' : 'text-red-600'}`}
+              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'bg-gradient-to-r from-teal-400 to-green-400' : 'text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500 text-red-600'}`}
             >
               Price
             </th>
             <th
-              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'text-gray-900' : 'text-red-600'}`}
+              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'bg-gradient-to-r from-teal-400 to-green-400' : 'text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500 text-red-600'}`}
             >
               Category
             </th>
             <th
-              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'text-gray-900' : 'text-red-600'}`}
+              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'bg-gradient-to-r from-teal-400 to-green-400' : 'text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500 text-red-600'}`}
             >
               Quantity
             </th>
             <th
-              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'text-gray-900' : 'text-red-600'}`}
+              className={`border border-gray-300 px-4 py-[8px] shadow-lg  ${disableActions ? 'bg-gradient-to-r from-teal-400 to-green-400' : 'text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500 text-red-600'}`}
             >
               Actions
             </th>
@@ -62,7 +61,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
               key={product.id}
               className={`hover:bg-gray-600 ${
                 disableActions || product.isDisabled
-                  ? 'bg-opacity-90 text-gray-500 pointer-events-none'
+                  ? 'bg-opacity-90 text-gray-700 pointer-events-none'
                   : 'text-white'
               }`}
             >

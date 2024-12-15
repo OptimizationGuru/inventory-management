@@ -14,7 +14,7 @@ const UserLayout: React.FC<UserLayoutProps> = ({
   isAdmin,
 }) => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-200">
       <Navbar onToggleView={onToggleView} isAdmin={isAdmin} />
       <Widgets isAdmin={isAdmin} />
       <main className="p-4">{children}</main>
