@@ -1,7 +1,23 @@
 module.exports = {
-  content: ['./src/**/*.{html,js,jsx,ts,tsx}'], // Correct pattern to include all relevant files
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        bodyFont: ['Poppins', 'sans-serif'],
+        titleFont: ['Montserrat', 'sans-serif'],
+      },
+      colors: {
+        bodyColor: "#212428",
+        lightText: '#c4cfde',
+        boxBg: '#23272b',
+        designColor: "#ff014f",
+        designColor: '#ff014f',
+        bodyColor: '#121212',
+      },
+      boxShadow: {
+        shadowOne: '10px 10px 19px #1c1e22, -10px -10px 19px #262a2e',
+      },
+    },
   },
   plugins: [],
 };

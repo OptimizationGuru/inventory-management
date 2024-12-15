@@ -1,3 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html,
+body {
+  height: 100%; /* Ensure full height of viewport */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+body {
+  --tw-bg-opacity: 0.9;
+  background-color: #111827;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  min-height: 100%; /* Ensure the main container fills the viewport */
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1; /* Allow content to expand if it exceeds 100vh */
+  overflow-y: auto; /* Allow vertical scrolling only when content exceeds */
+}
+
+@layer components {
+  .bannerIcon {
+    @apply w-12 h-12 bg-black bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-md shadow-shadowOne hover:bg-opacity-40 hover:translate-y-1
+    transition-all hover:text-designColor cursor-pointer duration-300;
+  }
+  .custom_li {
+    @apply w-full h-20 bg-black bg-opacity-25  border-[1px] text-xl text-gray-400 cursor-pointer flex justify-center items-center hover:bg-opacity-40 duration-300 rounded-none;
+  }
+
+  .bgOpacity {
+    @apply bg-black bg-opacity-40;
+  }
+  .highlight {
+    @apply focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 focus:duration-300;
+  }
+}
+
+.active {
+  color: white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
