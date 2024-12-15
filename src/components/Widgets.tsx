@@ -102,7 +102,9 @@ const Widgets: React.FC<{ isAdmin: boolean }> = ({ isAdmin }) => {
               : 'bg-gray-300 text-black'
           }`}
         >
-          <div className="text-orange-500">{widget.icon}</div>
+          <div className={isAdmin ? '  text-purple-600' : ' text-purple-400'}>
+            {widget.icon}
+          </div>
 
           <div
             className={`w-auto flex flex-col  font-semibold text-transparent bg-clip-text  bg-gradient-to-r  from-purple-400 to-green-500 rounded-full   ${
