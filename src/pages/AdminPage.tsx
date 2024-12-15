@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import AdminLayout from '../layouts/AdminLayout';
-import InventoryTable from '../components/InventoryTable';
+import { deleteProduct, toggleDisableProduct } from '../store/inventorySlice';
 import EditPopup from '../components/EditPopup';
 import { Product } from '../store/inventorySlice';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
+import ProductTable from '../components/ProductsTable';
 
 const AdminPage: React.FC<{ onToggleView: () => void; isAdmin: boolean }> = ({
   onToggleView,
@@ -12,16 +13,33 @@ const AdminPage: React.FC<{ onToggleView: () => void; isAdmin: boolean }> = ({
 }) => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isEditing, setIsEditing] = useState(false);
-  const inventory = useSelector((state: RootState) => state.inventory);
+  const products = useSelector((state: RootState) => state.inventory.products);
+  const dispatch = useDispatch();
 
-  const handleEdit = (product: Product) => {
+  const editProduct_ = (product: Product) => {
     setSelectedProduct(product);
     setIsEditing(true);
   };
 
+  const deleteProduct_ = (id: string) => {
+    dispatch(deleteProduct(id));
+  };
+
+  const toggleDisableProduct_ = (id: string) => {
+    dispatch(toggleDisableProduct(id));
+  };
+
   return (
     <AdminLayout onToggleView={onToggleView} isAdmin={isAdmin}>
-      {inventory && <InventoryTable onEdit={handleEdit} />}
+      {products && (
+        <ProductTable
+          products={products}
+          onEdit={editProduct_}
+          onDelete={deleteProduct_}
+          onToggleDisable={toggleDisableProduct_}
+          disableActions={false}
+        />
+      )}
       {isEditing && selectedProduct && (
         <EditPopup
           product={selectedProduct}

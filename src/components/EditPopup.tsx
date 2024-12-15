@@ -16,7 +16,7 @@ const EditPopup: React.FC<EditPopupProps> = ({ product, onClose }) => {
     const { name, value } = e.target;
     setFormValues({
       ...formValues,
-      [name]: value ? value : '0',
+      [name]: value ? value : '',
     });
   };
 

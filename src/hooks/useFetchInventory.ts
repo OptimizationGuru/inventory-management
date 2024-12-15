@@ -5,7 +5,6 @@ import { Product, setInventory } from '../store/inventorySlice';
 import { v4 as uuidv4 } from 'uuid';
 import {
   endpointUrl,
-  mockApiUrl,
   errMsgOne,
   errMsgTwo,
   tooManyRequestErrorCode,
@@ -20,6 +19,7 @@ const generateUniqueId = () => {
 const addUniqueIdToEntries = (data: Product[]) => {
   return data.map((item) => ({
     ...item,
+    isDisabled: false,
     id: generateUniqueId(),
   }));
 };
@@ -30,7 +30,7 @@ const useFetchInventory = () => {
   useEffect(() => {
     const fetchInventory = async () => {
       try {
-        const response = await axios.get(mockApiUrl);
+        const response = await axios.get(endpointUrl);
         const inventoryData = addUniqueIdToEntries(response.data);
         await dispatch(setInventory(inventoryData));
       } catch (error) {

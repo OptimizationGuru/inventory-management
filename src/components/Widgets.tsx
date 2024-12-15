@@ -31,23 +31,30 @@ const Widgets: React.FC<{ isAdmin: boolean }> = ({ isAdmin }) => {
   });
 
   useEffect(() => {
-    const totalProducts = (products?.length && products.length) || 0;
-    const totalValue =
-      (products?.length &&
-        products.reduce(
-          (sum, p) =>
-            sum +
-            (parseFloat(p.price.replace('$', '')) || 0) *
-              (Number(p.quantity) || 0),
-          0
-        )) ||
-      0;
+    const totalProducts =
+      (products?.length && products.filter((p) => !p.isDisabled).length) || 0;
+
+    const totalValue = products.reduce((sum, p) => {
+      return (
+        sum +
+        (p.isDisabled
+          ? 0
+          : (parseFloat(p.price.replace('$', '')) || 0) *
+            (Number(p.quantity) || 0))
+      );
+    }, 0);
+
     const outOfStock =
       (products?.length &&
-        products.filter((p) => Number(p.quantity) === 0).length) ||
+        products.filter((p) => !p.isDisabled && Number(p.quantity) === 0)
+          .length) ||
       0;
+
     const categories =
-      (products?.length && new Set(products.map((p) => p.category)).size) || 0;
+      (products?.length &&
+        new Set(products.filter((p) => !p.isDisabled).map((p) => p.category))
+          .size) ||
+      0;
 
     setStats({ totalProducts, totalValue, outOfStock, categories });
 
@@ -84,29 +91,28 @@ const Widgets: React.FC<{ isAdmin: boolean }> = ({ isAdmin }) => {
   return (
     <div
       key={componentKey}
-      className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 rounded-lg"
+      className="grid grid-cols-2 gap-3 sm:grid-cols-4  mb-6 rounded-lg custom-range:gap-8 custom-range:mx-4"
     >
       {widgetData.map((widget, idx) => (
         <div
           key={widget.id + idx}
-          className={`flex items-center p-4 rounded-lg ${
+          className={`flex gap-2 items-center p-4 mx-3  rounded-lg  ${
             isAdmin ? 'bg-gray-900 text-red-600' : 'bg-gray-200 text-black'
           }`}
         >
-          <div className={` ${isAdmin ? ' ' : ''}`}>{widget.icon}</div>
+          <div>{widget.icon}</div>
 
           <div
-            className={`flex flex-col gap-0 px-4 ${
-              isAdmin ? 'bg-gray-900 text-red-600' : 'bg-gray-200 text-black'
+            className={`w-auto flex flex-col  ${
+              isAdmin ? ' text-red-600' : ' text-black'
             }`}
           >
-            <h3 className={`flex items-center text-xl font-semibold`}>
+            <h3 className={`flex items-center text-xl font-semibold text-wrap`}>
               {widget.label}
             </h3>
-            {/* <p className={`flex items-center text-md px-4 py-1 text-gray-200 `}>{widget.value}</p>
-             */}
+
             <p
-              className={` flex items-center text-md  py-1 gap-0 px-4 ${
+              className={` flex items-center text-md  py-1 gap-0 px-4 text-wrap ${
                 isAdmin ? 'text-white' : ' text-black'
               }`}
             >
