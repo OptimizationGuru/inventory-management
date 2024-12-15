@@ -6,10 +6,10 @@
 
 html,
 body {
-  height: 100%; /* Ensure full height of viewport */
+  height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden;
 }
 
 body {
@@ -20,32 +20,33 @@ body {
 }
 
 .main-container {
-  min-height: 100%; /* Ensure the main container fills the viewport */
+  min-height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .content {
-  flex-grow: 1; /* Allow content to expand if it exceeds 100vh */
-  overflow-y: auto; /* Allow vertical scrolling only when content exceeds */
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
-@layer components {
-  .bannerIcon {
+/* @layer components { */
+  /* .bannerIcon {
     @apply w-12 h-12 bg-black bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-md shadow-shadowOne hover:bg-opacity-40 hover:translate-y-1
     transition-all hover:text-designColor cursor-pointer duration-300;
-  }
-  .custom_li {
+  } */
+  /* .custom_li {
     @apply w-full h-20 bg-black bg-opacity-25  border-[1px] text-xl text-gray-400 cursor-pointer flex justify-center items-center hover:bg-opacity-40 duration-300 rounded-none;
-  }
+  } */
 
-  .bgOpacity {
+  /* .bgOpacity {
     @apply bg-black bg-opacity-40;
-  }
-  .highlight {
+  } */
+
+  /* .highlight {
     @apply focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 focus:duration-300;
-  }
-}
+  } */
+/* } */
 
 .active {
   color: white;
