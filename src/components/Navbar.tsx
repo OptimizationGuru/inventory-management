@@ -11,9 +11,8 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleView, isAdmin }) => {
   return (
     <nav className="p-4 text-black flex justify-between items-center">
       <h1
-        className={`flex gap-2 text-xl font-bold bg-transparent  bg-gradient-to-r text-transparent bg-clip-text from-purple-400 to-green-500  rounded-lg p-4  ${
-          isAdmin ? 'text-white   py-1' : 'text-black'
-        }`}
+        className={`flex gap-2 text-xl font-bold bg-transparent  bg-gradient-to-r text-transparent bg-clip-text from-purple-400 to-green-500  rounded-lg p-4  
+          `}
       >
         Inventory Stats
       </h1>
