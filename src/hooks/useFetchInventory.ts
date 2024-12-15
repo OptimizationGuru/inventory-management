@@ -3,12 +3,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Product, setInventory } from '../store/inventorySlice';
 import { v4 as uuidv4 } from 'uuid';
-import {
-  endpointUrl,
-  errMsgOne,
-  errMsgTwo,
-  tooManyRequestErrorCode,
-} from '../utils/constants';
+import { endpointUrl, errMsgOne } from '../utils/constants';
 
 // Function to generate unique ID
 const generateUniqueId = () => {
@@ -34,17 +29,9 @@ const useFetchInventory = () => {
         const inventoryData = addUniqueIdToEntries(response.data);
         await dispatch(setInventory(inventoryData));
       } catch (error) {
-        if (
-          error?.response &&
-          error?.response.status === tooManyRequestErrorCode
-        ) {
-          console.error(errMsgOne);
-        } else {
-          console.error(errMsgTwo, error);
-        }
+        console.error(errMsgOne, error);
       }
     };
-
     fetchInventory();
   }, [dispatch]);
 };
