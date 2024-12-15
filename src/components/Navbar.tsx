@@ -29,8 +29,8 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleView, isAdmin }) => {
         </button>
 
         {isAdmin ? (
-          <div className="flex gap-2 text-white bg-gradient-to-r text-transparent bg-clip-text from-purple-400 to-green-500  rounded-full shadow-2xl   text-lg font-semibold px-4 py-2  hover:bg-gray-700 hover:bg-opacity-70 mt-0">
-            <MdAdminPanelSettings size={25} className="text-gray-400" /> Admin
+          <div className="flex gap-2  bg-gradient-to-r text-transparent bg-clip-text from-purple-400 to-green-500  rounded-full shadow-2xl   text-lg font-semibold px-4 py-2  hover:bg-gray-700 hover:bg-opacity-70 mt-0">
+            <MdAdminPanelSettings size={25} className="text-purple-500" /> Admin
           </div>
         ) : (
           <div className="flex gap-2  text-lg font-semibold py-2 px-4  hover:bg-gray-300 hover:bg-opacity-90 mt-0 bg-transparent  bg-gradient-to-r text-transparent bg-clip-text from-purple-600 to-green-500 rounded-lg p-4 shadow-lg">
