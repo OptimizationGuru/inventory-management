@@ -1,14 +1,28 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { setInventory } from '../store/inventorySlice';
+import { Product, setInventory } from '../store/inventorySlice';
+import { v4 as uuidv4 } from 'uuid';
 import {
   endpointUrl,
+  mockApiUrl,
   errMsgOne,
   errMsgTwo,
-  mockApiUrl,
   tooManyRequestErrorCode,
 } from '../utils/constants';
+
+// Function to generate unique ID
+const generateUniqueId = () => {
+  return uuidv4();
+};
+
+// Function to add unique ID to each entry
+const addUniqueIdToEntries = (data: Product[]) => {
+  return data.map((item) => ({
+    ...item,
+    id: generateUniqueId(),
+  }));
+};
 
 const useFetchInventory = () => {
   const dispatch = useDispatch();
@@ -16,8 +30,9 @@ const useFetchInventory = () => {
   useEffect(() => {
     const fetchInventory = async () => {
       try {
-        const response = await axios.get(endpointUrl);
-        await dispatch(setInventory(response.data));
+        const response = await axios.get(mockApiUrl);
+        const inventoryData = addUniqueIdToEntries(response.data);
+        await dispatch(setInventory(inventoryData));
       } catch (error) {
         if (
           error?.response &&
