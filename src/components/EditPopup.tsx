@@ -90,13 +90,13 @@ const EditPopup: React.FC<EditPopupProps> = ({ product, onClose }) => {
           <div className="flex justify-end">
             <button
               onClick={onClose}
-              className="mr-2 px-4 py-2 bg-gray-100 rounded-md hover:bg-gray-400"
+              className="mr-2 px-3 py-2 bg-gray-100 rounded-md hover:bg-gray-400"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-6 py-2 text-white bg-gray-800  hover:bg-[#191B1E] rounded-md"
+              className="px-4 py-2 text-white bg-gray-800  hover:bg-[#191B1E] rounded-md"
             >
               Save
             </button>
