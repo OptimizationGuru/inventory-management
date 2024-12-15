@@ -27,8 +27,8 @@ const EditPopup: React.FC<EditPopupProps> = ({ product, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center ">
-      <div className="bg-bodyColor bg-opacity-100 p-6 rounded shadow-lg w-full max-w-md relative">
+    <div className="fixed inset-0 flex items-center justify-center">
+      <div className="bg-bodyColor bg-opacity-100 p-6 rounded shadow-lg w-full max-w-md relative border border-gray-300">
         <button
           onClick={onClose}
           className="absolute top-2 right-2 text-gray-400  hover:text-gray-800"
