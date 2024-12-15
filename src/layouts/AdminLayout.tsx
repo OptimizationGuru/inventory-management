@@ -13,7 +13,6 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({
   onToggleView,
   isAdmin,
 }) => {
-  console.log(isAdmin, 'AdminLayout');
   return (
     <div className="min-h-screen bg-bodyColor text-designColor bg-opacity-95">
       <Navbar onToggleView={onToggleView} isAdmin={isAdmin} />
