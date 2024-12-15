@@ -5,23 +5,17 @@ import { localStorageKey } from '../utils/constants';
 
 const saveState = throttle((state: RootState) => {
   try {
-    // Fetch previously saved state
-    const serializedPrevState = localStorage.getItem(localStorageKey);
-    const prevState = serializedPrevState
-      ? JSON.parse(serializedPrevState)
-      : null;
+    const currentInventory = state.inventory;
+    const previousInventory = JSON.parse(
+      localStorage.getItem(localStorageKey) || '[]'
+    );
 
-    // Only save if the current state differs from the previous state
     if (
-      prevState &&
-      JSON.stringify(prevState.inventory.products) ===
-        JSON.stringify(state.inventory.products)
+      JSON.stringify(currentInventory) !== JSON.stringify(previousInventory)
     ) {
-      return;
+      const serializedState = JSON.stringify(currentInventory);
+      localStorage.setItem(localStorageKey, serializedState);
     }
-
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem(localStorageKey, serializedState);
   } catch (err) {
     console.error('Error saving state:', err);
   }
