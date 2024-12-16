@@ -96,13 +96,15 @@ const Widgets: React.FC<{ isAdmin: boolean }> = ({ isAdmin }) => {
       {widgetData.map((widget, idx) => (
         <div
           key={widget.id + idx}
-          className={`flex gap-2 items-center p-4 mx-3  rounded-lg  shadow-lg ${
+          className={`flex gap-2  items-center p-4 mx-3 rounded-lg  shadow-lg ${
             isAdmin
               ? 'border border-white text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500 text-red-600'
               : 'bg-gray-300 text-black'
           }`}
         >
-          <div className={isAdmin ? '  text-purple-600' : ' text-purple-400'}>
+          <div
+            className={isAdmin ? '   text-purple-600' : '   text-purple-400'}
+          >
             {widget.icon}
           </div>
 
@@ -111,14 +113,14 @@ const Widgets: React.FC<{ isAdmin: boolean }> = ({ isAdmin }) => {
               isAdmin ? ' text-red-600' : ' text-black'
             }`}
           >
-            <h3
-              className={`flex items-center text-xl mx-2 font-semibold text-wrap`}
+            <p
+              className={`flex items-center  text-xs sm:text-sm md:text-lg mx-1 sm:mx-2 font-semibold break-words`}
             >
               {widget.label}
-            </h3>
+            </p>
 
             <p
-              className={` flex items-center text-md  py-1   gap-0 px-4 text-wrap ${
+              className={`flex items-center  text-xs sm:text-sm md:text-lg mx-1 sm:mx-2 font-semibold break-words ${
                 isAdmin ? 'text-white' : ' text-black'
               }`}
             >
